@@ -1,0 +1,39 @@
+
+1- Uso del string PUNTO_ESPECIAL:
+
+La función de este string es poder identificar los puntos que no son final de oración, como por ejemplo:
+"A las 12.30 comienza el show." Notese que el punto entre "12" y "30" no representa un fin de oración.
+
+2- Fuentes:
+
+Estas constantes son necesarias para identificar el algoritmo adecuado para separar los párrafos.
+Es fácil de ver que, según la fuente de donde se extraiga el texto, la manera de separar párrafos es casi siempre la misma. Sólo varía la separacion segun la fuente.
+Actualmente esta implementado el algoritmo para separar párrafos provenientes de la fuente "La Voz del Interior".
+Faltaria agregar las demas fuentes, que actualmente desconozco.
+
+3- Referencias a objetos Parrafo y Oracion:
+
+Cada objete Texto tiene un atributo llamado parrafosList. Cuando se separan los párrafos, esta lista contiene
+los objetos párrafos del mismo.
+De la misma manera, el objeto Parrafo contiene el atributo listaOraciones, que contiene los objetos Oracion que corresponde a ese párrafo.
+
+Cada Parrafo contiene el orden o posición en la que va en el texto original. Tambien cada Oracion posee la posicion en la que va el en párrafo.
+Ambos indicadores de posicion, ya sea de ubicación en el texto o de ubicación en el parrafo, son números naturales.
+
+4- Identificación del Texto padre:
+
+Utilizo como clave foránea el título del texto. De esta forma, cada Parrafo puede conocer de que Texto proviene. Lo mismo para los objeto Oracion.
+
+5- Faltantes:
+
+Falta reparar algunos bugs como los siguientes:
+
+Para identificar los puntos que no son fin de oración, falta encontrar un algoritmo para detectar cosas como:
+
+a) "Iremos a la casa del Gral. Allí comeremos." (Nótese que no se puede identificar si ese punto es de una abreviacion
+o fin de oración.)
+
+b) "Haremos un homenaje al Brig. Gral. Cornelio de Saavedra." (Los puntos despues de "Brig" y de "Gral" no son fin de oración. El problema es que después del punto la siguiente palabra comienza con una mayúscula.)
+
+c) Falta encontrar la manera de distinguir oraciones que forman parte de un diálogo. Ej:
+"-No era necesario- le dije."
